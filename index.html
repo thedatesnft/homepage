@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=0,minimal-ui"
+    />
+    <meta
+      name="description"
+      content="The Dates NFT is a collection of 366 works. Each work includes a
+      specific date and a message with a maximum length of 128 characters
+      written for that date. Owning a work allows you to change the
+      content of the message multiple times."
+    />
+    <title>TheDatesNFT</title>
+    <link rel="stylesheet" href="./css/milligram.min.css" />
+    <link rel="stylesheet" href="./css/main.min.css" />
+  </head>
+  <body>
+    <div class="header d-flex flex-wrap justify-content-end" id="header">
+      <button
+        class="button button-outline m-l-1"
+        id="btn-connect"
+        onclick="onConnect()"
+      >
+        Sign in with Metamask
+      </button>
+      <div id="account-info" class="m-l-1">
+        <div id="account-balance" class="d-inline"></div>
+        <div id="vertical-divider" class="d-inline">|</div>
+        <div id="selected-account" class="d-inline"></div>
+      </div>
+      <button
+        class="button button-outline m-l-1"
+        id="btn-help"
+        onclick="toggleHelpModal(true)"
+      >
+        ?
+      </button>
+      <div class="social-network d-flex align-items-center m-l-1">
+        <a href="https://twitter.com/thedatesnft" target="_blank">
+          <img src="./images/twitter_icon.png" alt="Twitter" />
+        </a>
+
+        <a href="https://discord.gg/hppAfWmv69" target="_blank">
+          <img src="./images/discord_icon.png" alt="Discord" />
+        </a>
+
+        <a href="https://www.instagram.com/thedatesnft/" target="_blank">
+          <img src="./images/instagram_icon.png" alt="Instagram" />
+        </a>
+      </div>
+    </div>
+
+    <h4 id="message" class="message"></h4>
+
+    <div class="main-container">
+      <div class="explanation-block">
+        <div class="explanation-item">
+          <div class="explanation-status border-white"></div>
+          Unclaimed
+        </div>
+        <div class="explanation-item">
+          <div class="explanation-status border-yellow"></div>
+          Already claimed by others
+        </div>
+        <div class="explanation-item">
+          <div class="explanation-status border-green"></div>
+          Claimed by yourself
+        </div>
+      </div>
+
+      <div id="calendar-section"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="calendar-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="modal-close-btn" onclick="closeModal()"
+          >&times;</span
+        >
+
+        <div id="date-form">
+          <fieldset>
+            <label for="date-field"
+              >Date: <span id="selected-date"></span
+            ></label>
+            <label for="owner-field"
+              >Owner: <span id="owner" class="text-success"></span
+            ></label>
+            <label for="price-field" id="price-field"
+              >Price: <span id="current-price"></span
+            ></label>
+            <label for="message-field"
+              >Message: <span id="current-message"></span
+            ></label>
+            <textarea
+              placeholder="Enter a message with up to 128 characters"
+              id="message-field"
+            ></textarea>
+            <button id="form-btn" class="button-primary"></button>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <div id="help-modal" class="modal">
+      <div class="modal-content">
+        <span
+          class="close"
+          id="help-modal-close-btn"
+          onclick="toggleHelpModal(false)"
+          >&times;</span
+        >
+
+        <div class="help-form">
+          <p>
+            Do you have a really special, memorable day in your life? And do you
+            want to send a message that is stored forever for that day?
+            <br />
+            That's why we created The Dates NFT.
+          </p>
+          <h6 class="font-bold">What are the The Dates NTFs?</h6>
+          <p>
+            The Dates NFT is a collection of 366 works. Each work includes a
+            specific date and a message with a maximum length of 128 characters
+            written for that date. Owning a work allows you to change the
+            content of the message multiple times.
+          </p>
+          <h6 class="font-bold">How much is it?</h6>
+          <p>
+            The first mint starts at 0.01 ETH. After each mint the price of the
+            next mint will be multiplied by 1.1, until it reaches the capped
+            value of 2 ETH. This means the early buyers will get the cheapest
+            prices.
+          </p>
+          <h6 class="font-bold">What can I do with the NFT?</h6>
+          <p>
+            After purchasing the NFT, you'll be able to change the message in it
+            as many times as you want. The NFT will also be available on
+            Opensea and you'll be able to receive offers for it.
+          </p>
+          <h6 class="font-bold">What will happen once the project is finished?</h6>
+          <p>
+            Once the project has reached its goal (all dates has been filled), each NFT owner will be received a unique and real life Calligraphy with the date content they own.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.4/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tata-js@0.1.5/dist/tata.min.js"></script>
+    <script src="./js/app.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2B9065SGW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H2B9065SGW');
+    </script>
+  </body>
+</html>
