@@ -50,10 +50,6 @@
         <a href="https://discord.gg/hppAfWmv69" target="_blank">
           <img src="./images/discord_icon.png" alt="Discord" />
         </a>
-
-        <a href="https://www.instagram.com/thedatesnft/" target="_blank">
-          <img src="./images/instagram_icon.png" alt="Instagram" />
-        </a>
       </div>
     </div>
 
@@ -102,7 +98,9 @@
             <textarea
               placeholder="Enter a message with up to 128 characters"
               id="message-field"
+              onkeyup="onMessageKeyUp()"
             ></textarea>
+            <div id="characters-remaining"></div>
             <button id="form-btn" class="button-primary"></button>
           </fieldset>
         </div>
@@ -142,12 +140,16 @@
           <h6 class="font-bold">What can I do with the NFT?</h6>
           <p>
             After purchasing the NFT, you'll be able to change the message in it
-            as many times as you want. The NFT will also be available on
-            Opensea and you'll be able to receive offers for it.
+            as many times as you want. The NFT will also be available on Opensea
+            and you'll be able to receive offers for it.
           </p>
-          <h6 class="font-bold">What will happen once the project is finished?</h6>
+          <h6 class="font-bold">
+            What will happen once the project is finished?
+          </h6>
           <p>
-            Once the project has reached its goal (all dates has been filled), each NFT owner will be received a unique and real life Calligraphy with the date content they own.
+            Once the project has reached its goal (all dates has been filled),
+            each NFT owner will be received a unique and real life Calligraphy
+            with the date content they own.
           </p>
         </div>
       </div>
